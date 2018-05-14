@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<template encoding-version="1.2">
+    <description></description>
+    <groupId>4e34bb7f-0163-1000-69ac-d928f8e4c01b</groupId>
+    <name>Simple Inbound Call Full</name>
+    <snippet>
+        <controllerServices>
+            <id>48124f15-7f03-3704-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <bundle>
+                <artifact>nifi-http-context-map-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.6.0</version>
+            </bundle>
+            <comments></comments>
+            <descriptors>
+                <entry>
+                    <key>Maximum Outstanding Requests</key>
+                    <value>
+                        <name>Maximum Outstanding Requests</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Request Expiration</key>
+                    <value>
+                        <name>Request Expiration</name>
+                    </value>
+                </entry>
+            </descriptors>
+            <name>StandardHttpContextMap</name>
+            <persistsState>false</persistsState>
+            <properties>
+                <entry>
+                    <key>Maximum Outstanding Requests</key>
+                    <value>5000</value>
+                </entry>
+                <entry>
+                    <key>Request Expiration</key>
+                    <value>1 min</value>
+                </entry>
+            </properties>
+            <state>ENABLED</state>
+            <type>org.apache.nifi.http.StandardHttpContextMap</type>
+        </controllerServices>
+        <processors>
+            <id>22e5fc25-2764-32e2-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <position>
+                <x>0.0</x>
+                <y>0.0</y>
+            </position>
+            <bundle>
+                <artifact>nifi-standard-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.6.0</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Listening Port</key>
+                        <value>
+                            <name>Listening Port</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Hostname</key>
+                        <value>
+                            <name>Hostname</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>SSL Context Service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.ssl.RestrictedSSLContextService</identifiesControllerService>
+                            <name>SSL Context Service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>HTTP Context Map</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.http.HttpContextMap</identifiesControllerService>
+                            <name>HTTP Context Map</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Allowed Paths</key>
+                        <value>
+                            <name>Allowed Paths</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Default URL Character Set</key>
+                        <value>
+                            <name>Default URL Character Set</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Allow GET</key>
+                        <value>
+                            <name>Allow GET</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Allow POST</key>
+                        <value>
+                            <name>Allow POST</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Allow PUT</key>
+                        <value>
+                            <name>Allow PUT</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Allow DELETE</key>
+                        <value>
+                            <name>Allow DELETE</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Allow HEAD</key>
+                        <value>
+                            <name>Allow HEAD</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Allow OPTIONS</key>
+                        <value>
+                            <name>Allow OPTIONS</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Additional HTTP Methods</key>
+                        <value>
+                            <name>Additional HTTP Methods</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Client Authentication</key>
+                        <value>
+                            <name>Client Authentication</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>container-queue-size</key>
+                        <value>
+                            <name>container-queue-size</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Listening Port</key>
+                        <value>8181</value>
+                    </entry>
+                    <entry>
+                        <key>Hostname</key>
+                        <value>localhost</value>
+                    </entry>
+                    <entry>
+                        <key>SSL Context Service</key>
+                    </entry>
+                    <entry>
+                        <key>HTTP Context Map</key>
+                        <value>48124f15-7f03-3704-0000-000000000000</value>
+                    </entry>
+                    <entry>
+                        <key>Allowed Paths</key>
+                        <value>\/nifi\/services\/account</value>
+                    </entry>
+                    <entry>
+                        <key>Default URL Character Set</key>
+                        <value>UTF-8</value>
+                    </entry>
+                    <entry>
+                        <key>Allow GET</key>
+                        <value>true</value>
+                    </entry>
+                    <entry>
+                        <key>Allow POST</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>Allow PUT</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>Allow DELETE</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>Allow HEAD</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>Allow OPTIONS</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>Additional HTTP Methods</key>
+                    </entry>
+                    <entry>
+                        <key>Client Authentication</key>
+                        <value>No Authentication</value>
+                    </entry>
+                    <entry>
+                        <key>container-queue-size</key>
+                        <value>50</value>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <name>HandleHttpRequest</name>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>RUNNING</state>
+            <style/>
+            <type>org.apache.nifi.processors.standard.HandleHttpRequest</type>
+        </processors>
+    </snippet>
+    <timestamp>05/14/2018 16:39:49 MSK</timestamp>
+</template>
