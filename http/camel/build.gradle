@@ -54,6 +54,7 @@ dependencies {
     compile 'org.apache.camel:camel-spring:' + camelVersion
     compile 'org.apache.camel:camel-swagger-java:' + camelVersion
     compile 'org.apache.camel:camel-rest:' + camelRestVersion
+    compile 'org.apache.camel:camel-http:' + camelVersion
     compile 'org.apache.camel:camel-jackson:' + camelVersion
     compile 'com.fasterxml.jackson.core:jackson-databind:' + jaksonVersion
     compile 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:' + jaksonVersion

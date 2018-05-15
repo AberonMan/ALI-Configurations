@@ -1,9 +1,12 @@
 package com.mash.dip.http;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.model.rest.RestParamType;
+
+import java.util.UUID;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
@@ -12,7 +15,7 @@ import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 /**
  * This class get customer by id and return stub value due to emulate db call
  */
-public class CamelRestConfigurations extends RouteBuilder {
+public class RestFlowConfiguration extends RouteBuilder {
 
     private final CustomerRepositoryProcessor repository = new CustomerRepositoryProcessor();
 
@@ -32,17 +35,36 @@ public class CamelRestConfigurations extends RouteBuilder {
                 .bindingMode(RestBindingMode.json)
                 .post("/process")
                 .description("Task description endpoint")
-                .produces(TEXT_PLAIN)
+                .produces(APPLICATION_JSON)
                 .route()
-                .multicast()
-                .to("seda:sendAccepted")
-                .to("seda:asyncProcess");
+                .process(exchange -> {
+                    exchange.getOut().setHeaders(exchange.getIn().getHeaders());
+                    exchange.getOut().setHeader("operation_id", UUID.randomUUID());
+                    exchange.getOut().setBody(exchange.getIn().getBody());
+                })
+                .to("direct:sendAccepted")
+                .wireTap("direct:no.return")
+                .end();
 
-        from("seda:sendAccepted").wireTap("seda:sendAccepted").setHeader(Exchange.HTTP_RESPONSE_CODE, simple("202"))
-                .setBody(simple("Task accepted"));
 
-        from("seda:asyncProcess").wireTap("seda:asyncProcess")
-                .process(new AsyncCallProcessor());
+        // send accept status code and return process id
+        from("direct:sendAccepted")
+                .setHeader(Exchange.HTTP_RESPONSE_CODE, simple("202"))
+                .setBody(simple("{\"operation_id\":\"${in.headers.operation_id}\",\"operation_status\":\"ACCEPTED\"}"));
+
+        //emulate operation exectuin and send post request with operation result
+        from("direct:no.return")
+                .process(exchange -> exchange.getOut().setBody(simple("{\"operation_id\":\"${in.headers.operation_id}\"," +
+                        " \"operation_status\": \"SUCCESS\"}")))
+                .setHeader(Exchange.HTTP_METHOD, constant("POST"))
+                .setHeader(Exchange.CONTENT_TYPE, constant(TEXT_PLAIN))
+                .to("http://localhost:8080/camel/responcehook");
+
+        // emulate system which is listening operation execution callback
+        rest()
+                .post("/responcehook")
+                .route()
+                .process(exchange -> System.out.println(exchange.getIn().getBody()));
 
     }
 
@@ -71,4 +93,5 @@ public class CamelRestConfigurations extends RouteBuilder {
                 .process(repository);
     }
 }
+
 
