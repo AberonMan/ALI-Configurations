@@ -1,4 +1,4 @@
-package com.netcracker.camelbatchimport;
+package com.netcracker.camelbatch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

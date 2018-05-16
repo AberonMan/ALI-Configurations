@@ -1,4 +1,4 @@
-package com.netcracker.camelbatchimport;
+package com.netcracker.camelbatch;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -14,10 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.netcracker.camelbatchimport;
+package com.netcracker.camelbatch;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +29,7 @@ import java.util.List;
  * Use <tt>@Component</tt> to make Camel auto detect this route when starting.
  */
 @Component
-public class RestRoute extends RouteBuilder {
+public class BatchImportRoute extends AbstractBatchRoute {
 
     private static final List<String> ENDPOINTS = Arrays.asList(
             "http4://randomuser.me/api/0.6/?results={count}&format=json&bridgeEndpoint=true",
@@ -40,11 +39,11 @@ public class RestRoute extends RouteBuilder {
 
     @Override
     public void configure() {
-        configureRest();
+        super.configure();
 
-        rest().get("/invoke").to("direct:invoke");
+        rest().get("/invoke/import").to("direct:import");
 
-        RouteDefinition fromTimer = from("direct:invoke")
+        RouteDefinition fromTimer = from("direct:import")
                 .setHeader(Exchange.HTTP_METHOD, constant("GET"));
 
         for (String uri : ENDPOINTS) {
@@ -57,14 +56,5 @@ public class RestRoute extends RouteBuilder {
         from("direct:response")
                 .setBody(simple("insert into test(data) values('${body}')"))
                 .to("jdbc:dataSource");
-    }
-
-    private void configureRest() {
-        restConfiguration()
-                .contextPath("/camel").apiContextPath("/api-doc")
-                .apiProperty("api.title", "Camel REST API")
-                .apiProperty("api.version", "1.0")
-                .apiProperty("cors", "true")
-                .apiContextRouteId("doc-api");
     }
 }
