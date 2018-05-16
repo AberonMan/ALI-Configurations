@@ -3,6 +3,7 @@ package com.mash.dib.weblogic.processor.jms.consumer;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
+import org.apache.nifi.annotation.lifecycle.OnDisabled;
 import org.apache.nifi.annotation.lifecycle.OnEnabled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.controller.AbstractControllerService;
@@ -26,7 +27,6 @@ import static java.util.Collections.unmodifiableList;
 @SeeAlso(
         classNames = {"org.apache.nifi.jms.processors.ConsumeJMS", "org.apache.nifi.jms.processors.PublishJMS"}
 )
-
 public class JMSJndiConnectionFactoryProvider extends AbstractControllerService implements JMSConnectionFactoryProviderDefinition {
 
     private static final List<PropertyDescriptor> PROPERTY_DESCRIPTORS;
@@ -79,6 +79,12 @@ public class JMSJndiConnectionFactoryProvider extends AbstractControllerService 
             this.configured = false;
             throw new IllegalStateException(var3);
         }
+    }
+
+    @OnDisabled
+    public void disable() {
+        this.connectionFactory = null;
+        this.configured = false;
     }
 
     private void createConnectionFactoryInstance(ConfigurationContext context) throws Exception {
@@ -140,8 +146,7 @@ public class JMSJndiConnectionFactoryProvider extends AbstractControllerService 
         PROPERTY_DESCRIPTORS = unmodifiableList(asList(
                 CONNECTION_FACTORY_IMPL,
                 CONNECTION_FACTORY_JNDI_NAME,
-                SSL_CONTEXT_SERVICE,
-                SSL_CONTEXT_SERVICE,
+                INITIAL_CONTEXT_FACTORY,
                 PROVIDER_URL,
                 LOGIN,
                 PASSWORD
