@@ -924,7 +924,7 @@
                 <properties>
                     <entry>
                         <key>Database Connection Pooling Service</key>
-                        <value>cecf6a2b-adf7-3bb0-0000-000000000000</value>
+                        <value>206a5e56-238f-31de-0000-000000000000</value>
                     </entry>
                     <entry>
                         <key>db-fetch-db-type</key>
@@ -1290,5 +1290,5 @@
             <type>org.apache.nifi.processors.attributes.UpdateAttribute</type>
         </processors>
     </snippet>
-    <timestamp>05/16/2018 16:27:06 MSK</timestamp>
+    <timestamp>05/16/2018 16:29:26 MSK</timestamp>
 </template>
