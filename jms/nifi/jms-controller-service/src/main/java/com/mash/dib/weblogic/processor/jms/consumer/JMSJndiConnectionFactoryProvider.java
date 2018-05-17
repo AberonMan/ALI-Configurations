@@ -6,23 +6,25 @@ import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnDisabled;
 import org.apache.nifi.annotation.lifecycle.OnEnabled;
 import org.apache.nifi.components.PropertyDescriptor;
+import org.apache.nifi.components.Validator;
 import org.apache.nifi.controller.AbstractControllerService;
 import org.apache.nifi.controller.ConfigurationContext;
 import org.apache.nifi.jms.cf.JMSConnectionFactoryProviderDefinition;
 import org.apache.nifi.processor.util.StandardValidators;
 import org.apache.nifi.reporting.InitializationException;
-import org.apache.nifi.ssl.SSLContextService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.jms.ConnectionFactory;
+import javax.jms.*;
+import java.io.Serializable;
+import java.lang.IllegalStateException;
 import java.util.List;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableList;
 
 
-@Tags({"jms", "messaging", "integration", "queue", "topic", "publish", "subscribe","jndi"})
+@Tags({"jms", "messaging", "integration", "queue", "topic", "publish", "subscribe", "jndi"})
 @CapabilityDescription("Provides a generic service to get Connection Factory from JNDI Tree")
 @SeeAlso(
         classNames = {"org.apache.nifi.jms.processors.ConsumeJMS", "org.apache.nifi.jms.processors.PublishJMS"}
@@ -35,7 +37,6 @@ public class JMSJndiConnectionFactoryProvider extends AbstractControllerService 
 
     public static final PropertyDescriptor CONNECTION_FACTORY_IMPL;
     public static final PropertyDescriptor CONNECTION_FACTORY_JNDI_NAME;
-    public static final PropertyDescriptor SSL_CONTEXT_SERVICE;
     public static final PropertyDescriptor PROVIDER_URL;
     public static final PropertyDescriptor LOGIN;
     public static final PropertyDescriptor PASSWORD;
@@ -58,7 +59,6 @@ public class JMSJndiConnectionFactoryProvider extends AbstractControllerService 
     protected List<PropertyDescriptor> getSupportedPropertyDescriptors() {
         return PROPERTY_DESCRIPTORS;
     }
-
 
 
     @OnEnabled
@@ -110,16 +110,13 @@ public class JMSJndiConnectionFactoryProvider extends AbstractControllerService 
                 .expressionLanguageSupported(true)
                 .build();
 
-        SSL_CONTEXT_SERVICE = new PropertyDescriptor.Builder()
-                .name("SSL Context Service")
-                .description("The SSL Context Service used to provide client certificate information for TLS/SSL connections.")
-                .required(false).identifiesControllerService(SSLContextService.class).build();
 
         PROVIDER_URL = new PropertyDescriptor.Builder()
                 .name("JNDI Provider URL")
                 .description("URL to remote jndi server. It should be specified if you want to get connection factory from remote destination")
                 .required(false)
                 .expressionLanguageSupported(true)
+                .addValidator(Validator.VALID)
                 .build();
 
         LOGIN = new PropertyDescriptor.Builder()
@@ -127,6 +124,7 @@ public class JMSJndiConnectionFactoryProvider extends AbstractControllerService 
                 .description("Login to remote JNDI server")
                 .required(false)
                 .expressionLanguageSupported(true)
+                .addValidator(Validator.VALID)
                 .build();
 
         PASSWORD = new PropertyDescriptor.Builder()
@@ -134,12 +132,14 @@ public class JMSJndiConnectionFactoryProvider extends AbstractControllerService 
                 .description("Password to JNDI server")
                 .required(false)
                 .sensitive(true)
+                .addValidator(Validator.VALID)
                 .build();
 
         INITIAL_CONTEXT_FACTORY = new PropertyDescriptor.Builder()
                 .name("Context Class Name")
                 .description("Context Factory Full Class Name, e.g. weblogic.jndi.WLInitialContextFactory ")
                 .required(false)
+                .addValidator(Validator.VALID)
                 .build();
 
 
@@ -151,7 +151,11 @@ public class JMSJndiConnectionFactoryProvider extends AbstractControllerService 
                 LOGIN,
                 PASSWORD
         ));
-
     }
+
+
+
+
+
 
 }
