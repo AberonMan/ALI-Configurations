@@ -9,9 +9,9 @@ public class StubController {
     @GetMapping("get/json")
     public String getJson() {
         return "{\n" +
-                "\t\"string\": \"yes\",\n" +
-                "\t\"boolean\": true,\n" +
-                "\t\"number\": 1\n" +
+                "\t\"str\": \"yes\",\n" +
+                "\t\"bool\": true,\n" +
+                "\t\"num\": 1\n" +
                 "}";
     }
 
