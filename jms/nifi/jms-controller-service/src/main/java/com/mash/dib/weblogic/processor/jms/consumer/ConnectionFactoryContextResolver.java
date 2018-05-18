@@ -35,7 +35,7 @@ public class ConnectionFactoryContextResolver {
         Context context = null;
         try {
             context = new InitialContext(environment);
-            return (ConnectionFactory) context.lookup(connectionFactoryJndiName);
+            return new ConnectionFactoryWrapper((ConnectionFactory) context.lookup(connectionFactoryJndiName));
         } finally {
             if (context != null) {
                 context.close();
@@ -46,7 +46,11 @@ public class ConnectionFactoryContextResolver {
 
     private final class ConnectionFactoryWrapper implements ConnectionFactory {
 
-        private ConnectionFactory factory;
+        private final ConnectionFactory factory;
+
+        private ConnectionFactoryWrapper(ConnectionFactory factory) {
+            this.factory = factory;
+        }
 
         @Override
         public Connection createConnection() throws JMSException {
