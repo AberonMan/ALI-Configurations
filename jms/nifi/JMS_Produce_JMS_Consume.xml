@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<template encoding-version="1.2">
+    <description></description>
+    <groupId>4e34bb7f-0163-1000-69ac-d928f8e4c01b</groupId>
+    <name>JMS Produce/JMS Consume</name>
+    <snippet>
+        <connections>
+            <id>8d34d81a-c3b1-37bc-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <destination>
+                <groupId>37bdd215-fb1c-36af-0000-000000000000</groupId>
+                <id>59bdd322-8597-3f2a-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <name></name>
+            <selectedRelationships>success</selectedRelationships>
+            <source>
+                <groupId>37bdd215-fb1c-36af-0000-000000000000</groupId>
+                <id>9fce8756-ebfd-3fde-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <connections>
+            <id>f973c7cf-60e2-3973-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <bends>
+                <x>457.8218897039769</x>
+                <y>380.8510479205256</y>
+            </bends>
+            <bends>
+                <x>457.8218897039769</x>
+                <y>430.8510479205256</y>
+            </bends>
+            <destination>
+                <groupId>37bdd215-fb1c-36af-0000-000000000000</groupId>
+                <id>e0c33c1f-71c9-3716-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <name></name>
+            <selectedRelationships>failure</selectedRelationships>
+            <selectedRelationships>success</selectedRelationships>
+            <source>
+                <groupId>37bdd215-fb1c-36af-0000-000000000000</groupId>
+                <id>e0c33c1f-71c9-3716-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <connections>
+            <id>103bd5df-b783-3c1d-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <destination>
+                <groupId>37bdd215-fb1c-36af-0000-000000000000</groupId>
+                <id>e0c33c1f-71c9-3716-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <name></name>
+            <selectedRelationships>success</selectedRelationships>
+            <source>
+                <groupId>37bdd215-fb1c-36af-0000-000000000000</groupId>
+                <id>e25d57b8-a4c8-35d3-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <connections>
+            <id>6fd48040-4899-3e3d-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <bends>
+                <x>1094.5858327948026</x>
+                <y>387.8728844010425</y>
+            </bends>
+            <bends>
+                <x>1094.5858327948026</x>
+                <y>437.8728844010425</y>
+            </bends>
+            <destination>
+                <groupId>37bdd215-fb1c-36af-0000-000000000000</groupId>
+                <id>59bdd322-8597-3f2a-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <name></name>
+            <selectedRelationships>failure</selectedRelationships>
+            <selectedRelationships>success</selectedRelationships>
+            <source>
+                <groupId>37bdd215-fb1c-36af-0000-000000000000</groupId>
+                <id>59bdd322-8597-3f2a-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <controllerServices>
+            <id>babd01be-0e8a-3258-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <bundle>
+                <artifact>jms-bundle-nar</artifact>
+                <group>com.mash.dip.nifi.weblogic.processor.jms</group>
+                <version>1.0-SNAPSHOT</version>
+            </bundle>
+            <comments></comments>
+            <descriptors>
+                <entry>
+                    <key>cf</key>
+                    <value>
+                        <name>cf</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>cfjndi</key>
+                    <value>
+                        <name>cfjndi</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Context Class Name</key>
+                    <value>
+                        <name>Context Class Name</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>JNDI Provider URL</key>
+                    <value>
+                        <name>JNDI Provider URL</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Login</key>
+                    <value>
+                        <name>Login</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Password</key>
+                    <value>
+                        <name>Password</name>
+                    </value>
+                </entry>
+            </descriptors>
+            <name>JMSJndiConnectionFactoryProvider</name>
+            <persistsState>false</persistsState>
+            <properties>
+                <entry>
+                    <key>cf</key>
+                    <value>weblogic.jms.ConnectionFactory
+</value>
+                </entry>
+                <entry>
+                    <key>cfjndi</key>
+                    <value>com.ntcracker.mash.connectionfactory</value>
+                </entry>
+                <entry>
+                    <key>Context Class Name</key>
+                    <value>weblogic.jndi.WLInitialContextFactory</value>
+                </entry>
+                <entry>
+                    <key>JNDI Provider URL</key>
+                    <value>t3://devapp046.netcracker.com:6811</value>
+                </entry>
+                <entry>
+                    <key>Login</key>
+                    <value>system</value>
+                </entry>
+                <entry>
+                    <key>Password</key>
+                </entry>
+            </properties>
+            <state>ENABLED</state>
+            <type>com.mash.dib.weblogic.processor.jms.consumer.JMSJndiConnectionFactoryProvider</type>
+        </controllerServices>
+        <processors>
+            <id>9fce8756-ebfd-3fde-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <position>
+                <x>627.34521484375</x>
+                <y>0.0</y>
+            </position>
+            <bundle>
+                <artifact>jms-bundle-nar</artifact>
+                <group>com.mash.dip.nifi.weblogic.processor.jms</group>
+                <version>1.0-SNAPSHOT</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Connection Factory Service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.jms.cf.JMSConnectionFactoryProviderDefinition</identifiesControllerService>
+                            <name>Connection Factory Service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Destination Name</key>
+                        <value>
+                            <name>Destination Name</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Destination Type</key>
+                        <value>
+                            <name>Destination Type</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>User Name</key>
+                        <value>
+                            <name>User Name</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Password</key>
+                        <value>
+                            <name>Password</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Connection Client ID</key>
+                        <value>
+                            <name>Connection Client ID</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Session Cache size</key>
+                        <value>
+                            <name>Session Cache size</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>character-set</key>
+                        <value>
+                            <name>character-set</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Acknowledgement Mode</key>
+                        <value>
+                            <name>Acknowledgement Mode</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Durable subscription</key>
+                        <value>
+                            <name>Durable subscription</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Shared subscription</key>
+                        <value>
+                            <name>Shared subscription</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Subscription Name</key>
+                        <value>
+                            <name>Subscription Name</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Connection Factory Service</key>
+                        <value>babd01be-0e8a-3258-0000-000000000000</value>
+                    </entry>
+                    <entry>
+                        <key>Destination Name</key>
+                        <value>com.netcracker.mash.queue</value>
+                    </entry>
+                    <entry>
+                        <key>Destination Type</key>
+                        <value>QUEUE</value>
+                    </entry>
+                    <entry>
+                        <key>User Name</key>
+                    </entry>
+                    <entry>
+                        <key>Password</key>
+                    </entry>
+                    <entry>
+                        <key>Connection Client ID</key>
+                    </entry>
+                    <entry>
+                        <key>Session Cache size</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>character-set</key>
+                        <value>windows-1251</value>
+                    </entry>
+                    <entry>
+                        <key>Acknowledgement Mode</key>
+                        <value>2</value>
+                    </entry>
+                    <entry>
+                        <key>Durable subscription</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>Shared subscription</key>
+                        <value>false</value>
+                    </entry>
+                    <entry>
+                        <key>Subscription Name</key>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <name>ConsumeJMS</name>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>RUNNING</state>
+            <style/>
+            <type>org.apache.nifi.jms.processors.ConsumeJMS</type>
+        </processors>
+        <processors>
+            <id>e0c33c1f-71c9-3716-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <position>
+                <x>2.8218897039769217</x>
+                <y>340.8510479205256</y>
+            </position>
+            <bundle>
+                <artifact>jms-bundle-nar</artifact>
+                <group>com.mash.dip.nifi.weblogic.processor.jms</group>
+                <version>1.0-SNAPSHOT</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Connection Factory Service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.jms.cf.JMSConnectionFactoryProviderDefinition</identifiesControllerService>
+                            <name>Connection Factory Service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Destination Name</key>
+                        <value>
+                            <name>Destination Name</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Destination Type</key>
+                        <value>
+                            <name>Destination Type</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>User Name</key>
+                        <value>
+                            <name>User Name</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Password</key>
+                        <value>
+                            <name>Password</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Connection Client ID</key>
+                        <value>
+                            <name>Connection Client ID</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Session Cache size</key>
+                        <value>
+                            <name>Session Cache size</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>message-body-type</key>
+                        <value>
+                            <name>message-body-type</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>character-set</key>
+                        <value>
+                            <name>character-set</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Connection Factory Service</key>
+                        <value>babd01be-0e8a-3258-0000-000000000000</value>
+                    </entry>
+                    <entry>
+                        <key>Destination Name</key>
+                        <value>com.netcracker.mash.queue</value>
+                    </entry>
+                    <entry>
+                        <key>Destination Type</key>
+                        <value>QUEUE</value>
+                    </entry>
+                    <entry>
+                        <key>User Name</key>
+                    </entry>
+                    <entry>
+                        <key>Password</key>
+                    </entry>
+                    <entry>
+                        <key>Connection Client ID</key>
+                    </entry>
+                    <entry>
+                        <key>Session Cache size</key>
+                        <value>1</value>
+                    </entry>
+                    <entry>
+                        <key>message-body-type</key>
+                        <value>bytes</value>
+                    </entry>
+                    <entry>
+                        <key>character-set</key>
+                        <value>windows-1251</value>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <name>PublishJMS</name>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>failure</name>
+            </relationships>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>RUNNING</state>
+            <style/>
+            <type>org.apache.nifi.jms.processors.PublishJMS</type>
+        </processors>
+        <processors>
+            <id>e25d57b8-a4c8-35d3-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <position>
+                <x>0.0</x>
+                <y>23.563751220703125</y>
+            </position>
+            <bundle>
+                <artifact>nifi-standard-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.6.0</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Base Path</key>
+                        <value>
+                            <name>Base Path</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Listening Port</key>
+                        <value>
+                            <name>Listening Port</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Max Data to Receive per Second</key>
+                        <value>
+                            <name>Max Data to Receive per Second</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>SSL Context Service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.ssl.RestrictedSSLContextService</identifiesControllerService>
+                            <name>SSL Context Service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Authorized DN Pattern</key>
+                        <value>
+                            <name>Authorized DN Pattern</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Max Unconfirmed Flowfile Time</key>
+                        <value>
+                            <name>Max Unconfirmed Flowfile Time</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>HTTP Headers to receive as Attributes (Regex)</key>
+                        <value>
+                            <name>HTTP Headers to receive as Attributes (Regex)</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Return Code</key>
+                        <value>
+                            <name>Return Code</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Base Path</key>
+                        <value>sendJMS</value>
+                    </entry>
+                    <entry>
+                        <key>Listening Port</key>
+                        <value>8383</value>
+                    </entry>
+                    <entry>
+                        <key>Max Data to Receive per Second</key>
+                    </entry>
+                    <entry>
+                        <key>SSL Context Service</key>
+                    </entry>
+                    <entry>
+                        <key>Authorized DN Pattern</key>
+                        <value>.*</value>
+                    </entry>
+                    <entry>
+                        <key>Max Unconfirmed Flowfile Time</key>
+                        <value>60 secs</value>
+                    </entry>
+                    <entry>
+                        <key>HTTP Headers to receive as Attributes (Regex)</key>
+                    </entry>
+                    <entry>
+                        <key>Return Code</key>
+                        <value>200</value>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <name>ListenHTTP</name>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>RUNNING</state>
+            <style/>
+            <type>org.apache.nifi.processors.standard.ListenHTTP</type>
+        </processors>
+        <processors>
+            <id>59bdd322-8597-3f2a-0000-000000000000</id>
+            <parentGroupId>37bdd215-fb1c-36af-0000-000000000000</parentGroupId>
+            <position>
+                <x>639.5858327948026</x>
+                <y>347.8728844010425</y>
+            </position>
+            <bundle>
+                <artifact>nifi-standard-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.6.0</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Directory</key>
+                        <value>
+                            <name>Directory</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Conflict Resolution Strategy</key>
+                        <value>
+                            <name>Conflict Resolution Strategy</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Create Missing Directories</key>
+                        <value>
+                            <name>Create Missing Directories</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Maximum File Count</key>
+                        <value>
+                            <name>Maximum File Count</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Last Modified Time</key>
+                        <value>
+                            <name>Last Modified Time</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Permissions</key>
+                        <value>
+                            <name>Permissions</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Owner</key>
+                        <value>
+                            <name>Owner</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Group</key>
+                        <value>
+                            <name>Group</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Directory</key>
+                        <value>./tmp/</value>
+                    </entry>
+                    <entry>
+                        <key>Conflict Resolution Strategy</key>
+                        <value>fail</value>
+                    </entry>
+                    <entry>
+                        <key>Create Missing Directories</key>
+                        <value>true</value>
+                    </entry>
+                    <entry>
+                        <key>Maximum File Count</key>
+                    </entry>
+                    <entry>
+                        <key>Last Modified Time</key>
+                    </entry>
+                    <entry>
+                        <key>Permissions</key>
+                    </entry>
+                    <entry>
+                        <key>Owner</key>
+                    </entry>
+                    <entry>
+                        <key>Group</key>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <name>PutFile</name>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>failure</name>
+            </relationships>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>RUNNING</state>
+            <style/>
+            <type>org.apache.nifi.processors.standard.PutFile</type>
+        </processors>
+    </snippet>
+    <timestamp>05/18/2018 14:36:14 MSK</timestamp>
+</template>
