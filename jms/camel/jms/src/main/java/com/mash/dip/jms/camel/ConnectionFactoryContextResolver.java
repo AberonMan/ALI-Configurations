@@ -112,13 +112,20 @@ public class ConnectionFactoryContextResolver {
         }
 
         @Override
-        public ConnectionConsumer createConnectionConsumer(Destination destination, String messageSelector, ServerSessionPool sessionPool, int maxMessages) throws JMSException {
+        public ConnectionConsumer createConnectionConsumer(Destination destination,
+                                                           String messageSelector,
+                                                           ServerSessionPool sessionPool,
+                                                           int maxMessages) throws JMSException {
             return innerConnection.createConnectionConsumer(destination, messageSelector, sessionPool, maxMessages);
         }
 
 
         @Override
-        public ConnectionConsumer createDurableConnectionConsumer(Topic topic, String subscriptionName, String messageSelector, ServerSessionPool sessionPool, int maxMessages) throws JMSException {
+        public ConnectionConsumer createDurableConnectionConsumer(Topic topic,
+                                                                  String subscriptionName,
+                                                                  String messageSelector,
+                                                                  ServerSessionPool sessionPool,
+                                                                  int maxMessages) throws JMSException {
             return innerConnection.createDurableConnectionConsumer(topic, subscriptionName, messageSelector, sessionPool, maxMessages);
         }
     }
@@ -237,6 +244,7 @@ public class ConnectionFactoryContextResolver {
         public MessageConsumer createConsumer(Destination destination, String messageSelector, boolean noLocal) throws JMSException {
             return session.createConsumer(destination, messageSelector, noLocal);
         }
+
         @Override
         public Queue createQueue(String queueName) throws JMSException {
             InitialContext context = null;
