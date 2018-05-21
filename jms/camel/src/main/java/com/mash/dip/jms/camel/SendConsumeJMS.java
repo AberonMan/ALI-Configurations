@@ -15,14 +15,17 @@ public class SendConsumeJMS {
     public static void  main(String[] args) throws Exception {
 
         //delete old fike
+        System.out.println("Delete old folder ......");
         //noinspection ResultOfMethodCallIgnored
         Paths.get("output/jmsout").toFile().delete();
 
         //create camel content
+        System.out.println("Create camel context...........");
         CamelContext context = new DefaultCamelContext();
 
         // resolve connection factory and add to route
         ConnectionFactoryContextResolver resolver = new ConnectionFactoryContextResolver();
+        System.out.println("Resolve connection factory and add to route");
         context.addComponent("test-jms",
                 JmsComponent.jmsComponentAutoAcknowledge(resolver.resolveConnectionFactory()));
         context.addRoutes(new RouteBuilder() {
@@ -37,7 +40,9 @@ public class SendConsumeJMS {
         // send messages to queue
         ProducerTemplate template = context.createProducerTemplate();
         for (int i = 0; i < 10; i++) {
-            template.sendBody("test-jms:queue:com.dip.mash.camel.queue", "Test Message: " + i + "\n\r");
+            String message = "Test Message: " + i + "\n\r";
+            template.sendBody("test-jms:queue:com.dip.mash.camel.queue", message);
+            System.out.print("Send jms message: " + message);
         }
 
         // just to be sure that message was written to file
